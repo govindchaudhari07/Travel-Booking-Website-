@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="zxx" class="no-js" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="website/Common/layout::frag1"></head>
+<body style="background-color:#F0F8FF">
+	<header th:replace="website/Common/layout::frag2"> </header>
+	<!-- #header -->
+
+	<!-- start banner Area -->
+	<section class="about-banner relative">
+		<div class="overlay overlay-bg"></div>
+		<div class="container">
+			<div class="row d-flex align-items-center justify-content-center">
+				<div class="about-content col-lg-12">
+					<h1 class="text-white">Tour Packages</h1>
+					<p class="text-white link-nav">
+						<a href="/home">Home </a> <span class="lnr lnr-arrow-right"></span>
+						<a > Tour Packages</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End banner Area -->
+
+	<!-- Start hot-deal Area -->
+	<section class="hot-deal-area section-gap" style="">
+		<div class="container">
+			<div class="row d-flex justify-content-center">
+				<div class="menu-content pb-70 col-lg-8">
+					<div class="title text-center">
+						<h1 class="mb-10">Today’s Hot Deals</h1>
+						<p>We all live in an age that belongs to the young at heart.
+							Life that is becoming extremely fast, day to.</p>
+					</div>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-lg-10 active-hot-deal-carusel">
+					<div class="single-carusel" th:each="desti:${destinations}">
+						<div class="thumb relative">
+							<div class="overlay overlay-bg"></div>
+							<img class="img-fluid" th:src="@{'/uploads/'+${desti.images}}"
+								alt="" style="width: 950px; height: 400px;">
+						</div>
+						
+						
+						<div class="details">
+						<span><a  class="price-btn" 
+								style="font-size: 17px;color:black ;background-color:#f8b600; border-radius:6%;padding:11px;">Starting From Rs <span 
+								th:text="${desti.price}"
+								style="opacity: 0.7; vertical-align: bottom;color:black;"></span></a> </span>
+								
+								<br>
+								<br>
+							<h4 class="text-white" th:text="${desti.destinations}"></h4>
+
+						</div>
+						
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End hot-deal Area -->
+
+
+	<!-- Start destinations Area -->
+	<section class="destinations-area section-gap">
+		<div class="container">
+			<div class="row d-flex justify-content-center">
+				<div class="menu-content pb-40 col-lg-8">
+					<div class="title text-center">
+						<h1 class="mb-10">Popular Destinations</h1>
+						<p>We all live in an age that belongs to the young at heart.
+							Life that is becoming extremely fast, day to.</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4" th:each="packs:${pack}">
+					<div class="single-destinations">
+						<div class="thumb">
+							<img th:src="@{'/uploads/'+${packs.image}}" alt=""
+								style="width: 100%; height: 100%; border-radius: 3%;">
+						</div>
+						<div class="details">
+							<h4 th:text="${packs.heading}"></h4>
+							<p th:text="${packs.state}"></p>
+							<ul class="package-list">
+								<li class="d-flex justify-content-between align-items-center">
+									<span>Duration</span> <span th:text="${packs.duration}"></span>
+								</li>
+								<li class="d-flex justify-content-between align-items-center">
+									<span>Date</span> <span th:text="${packs.date}"></span>
+								</li>
+
+								<li class="d-flex justify-content-between align-items-center">
+									<span>Extras</span> <span th:text="${packs.extras}"></span>
+								</li>
+								<li class="d-flex justify-content-between align-items-center">
+									<span>Price per person </span> <span class="price-btn">Rs
+										<span th:text="${packs.price}"></span>
+								</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+	<!-- End destinations Area -->
+
+
+	<!-- Start home-about Area -->
+	<section class="home-about-area">
+		<div class="container-fluid">
+			<div class="row align-items-center justify-content-end">
+				<div class="col-lg-6 col-md-12 home-about-left">
+					<h1>
+						Did not find your Package? <br> Feel free to ask us. <br>
+						We‘ll make it for you
+					</h1>
+					<p>inappropriate behavior is often laughed off as “boys will be
+						boys,” women face higher conduct standards especially in the
+						workplace. That’s why it’s crucial that, as women, our behavior on
+						the job is beyond reproach. inappropriate behavior is often
+						laughed.</p>
+
+				</div>
+				<div class="col-lg-6 col-md-12 home-about-right no-padding">
+					<img class="img-fluid" src="img/packages/about-img.jpg" alt="">
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End home-about Area -->
+
+	<!-- start footer Area -->
+	<footer th:replace="website/Common/layout::frag3"></footer>
+
+</body>
+</html>

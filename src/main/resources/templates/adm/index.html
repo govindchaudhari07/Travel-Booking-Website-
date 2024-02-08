@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="adm/Commonadm/admlayout::adm1"></head>
+<body onload="welcomewhilelogin();getAllDashboardCount();">
+
+	<div class="container-scroller">
+		<!-- partial:../../partials/_navbar.html -->
+
+		<!--  <div class="row" id="proBanner">
+    <div class="col-12">
+      <span class="d-flex align-items-center purchase-popup">
+        <p  target="_blank" class="btn download-button purchase-button ">  Welcome  </p>
+        
+        
+      </span>
+    </div>
+  </div> -->
+
+
+		<nav th:replace="adm/Commonadm/admlayout::adm8"></nav>
+
+
+		<!-- partial -->
+		<div class="container-fluid page-body-wrapper">
+			<!-- partial:../../partials/_settings-panel.html -->
+
+			<div th:replace="adm/Commonadm/admlayout::adm3"></div>
+
+			<div th:replace="adm/Commonadm/admlayout::adm4"></div>
+
+			<nav th:replace="adm/Commonadm/admlayout::adm5"></nav>
+
+
+
+
+
+
+
+
+
+
+			<!-- partial -->
+			<div class="main-panel">
+
+				<div class="content-wrapper">
+					<h4 style="">statistics</h4>
+					<hr><br>
+					<div class="row">
+						<div class="col-xl-6 grid-margin stretch-card flex-column">
+							<h5 class="mb-2 text-titlecase mb-4" style="color:#008B8B;">&nbsp;Enquiries</h5>
+
+
+							<div class="row">
+								<div class="col-md-6 grid-margin stretch-card">
+
+									<div
+										class="card border-left-primary border-bottom-primary shadow h-100 py-1">
+
+										<div
+											class="card-body d-flex flex-column justify-content-between"
+											style="background-color: #F5F5F5;">
+
+
+											<h6 style="color:#808080;">
+												Daily
+												<hr>
+
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<span class="col-10"
+													style="text-align: center; vertical-align: middle; color: #DB7093;"
+													id="DailyBooking"></span>
+											</h6>
+
+
+
+										</div>
+
+									</div>
+
+								</div>
+
+								<div class="col-md-6 grid-margin stretch-card">
+
+									<div
+										class="card border-left-primary border-bottom-primary shadow h-100 py-1">
+
+										<div
+											class="card-body d-flex flex-column justify-content-between"
+											style="background-color: #F5F5F5;">
+
+											<h6 style="color:#808080;">
+												Weekly
+												<hr>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<span class="col-10"
+													style="text-align: center; vertical-align: middle; color: #DB7093;"
+													id="weeklyBooking22"></span>
+											</h6>
+
+
+
+										</div>
+
+
+
+									</div>
+
+								</div>
+								<div class="col-md-6 grid-margin stretch-card">
+
+									<div
+										class="card border-left-primary border-bottom-primary shadow h-100 py-1"
+										style="">
+
+										<div
+											class="card-body d-flex flex-column justify-content-between"
+											style="background-color: #F5F5F5;">
+
+											<h6 style="color:#808080;">
+												Monthly
+												<hr>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<span class="col-10"
+													style="text-align: center; vertical-align: middle; color: #DB7093;"
+													id="monthlyBooking22"></span>
+											</h6>
+
+
+
+										</div>
+									</div>
+
+								</div>
+
+								<div class="col-md-6 grid-margin stretch-card">
+
+									<div
+										class="card border-left-primary border-bottom-primary shadow h-100 py-1"
+										style="">
+
+										<div
+											class="card-body d-flex flex-column justify-content-between"
+											style="background-color: #F5F5F5;">
+
+											<h6 style="color:#808080;">
+												Yearly
+												<hr>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<span class="col-10"
+													style="text-align: center; vertical-align: middle; color: #DB7093;"
+													id="yearlybooking"></span>
+											</h6>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-6 grid-margin stretch-card flex-column">
+							<h5 class="mb-2 text-titlecase mb-4" style="color:#008B8B; "> &nbsp;Bookings</h5>
+
+
+							<div class="row">
+
+
+								<div class="col-md-6 grid-margin stretch-card">
+
+									<div
+										class="card border-left-primary border-bottom-primary shadow h-100 py-1"
+										style="">
+
+										<div
+											class="card-body d-flex flex-column justify-content-between"
+											style="background-color: #F5F5F5;">
+
+											<h6 style="color:#808080;">
+												Todays Confirmed
+												<hr>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<span class="col-10"
+													style="text-align: center; vertical-align: middle; color: #DB7093;"
+													id="confirmedbooking"></span>
+											</h6>
+
+
+
+										</div>
+
+
+									</div>
+
+								</div>
+								
+
+
+
+							</div>
+
+						</div>
+
+					</div>
+
+
+
+
+
+				</div>
+
+
+				<!-- content-wrapper ends -->
+				<!-- partial:partials/_footer.html -->
+				<footer th:replace="adm/Commonadm/admlayout::adm6"> </footer>
+				<!-- partial -->
+			</div>
+			<!-- main-panel ends -->
+		</div>
+		<!-- page-body-wrapper ends -->
+	</div>
+	<!-- container-scro
+
+  <!-- base:js -->
+	<script>
+  function welcomewhilelogin(){
+  
+ document.getElementById('toast').innerHTML = "Welcome..";
+				document.getElementById('toast').style.color = "white";
+				document.getElementById('toast').style.backgroundColor = "black";
+				showToast();
+  
+  }
+  
+  
+  </script>
+	<script src="js/travelfunction.js"></script>
+	<script src="Admin/vendors/js/vendor.bundle.base.js"></script>
+	<!-- endinject -->
+	<!-- Plugin js for this page-->
+	<script src="Admin/vendors/chart.js/Chart.min.js"></script>
+	<!-- End plugin js for this page-->
+	<!-- inject:js -->
+	<div th:replace="adm/Commonadm/admlayout::adm7"></div>
+	<!-- endinject -->
+	<!-- Custom js for this page-->
+	<script src="admpage/Admin/js/dashboard.js"></script>
+	<!-- End custom js for this page-->
+</body>
+
+</html>
+

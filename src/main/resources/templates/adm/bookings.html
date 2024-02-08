@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="adm/Commonadm/admlayout::adm1">
+<style>
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+</style>
+
+
+</head>
+
+<!-- link for edit icon inserting  -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<body onload="orderlist();">
+	<div class="container-scroller">
+		<!-- partial:../../partials/_navbar.html -->
+
+		<nav th:replace="adm/Commonadm/admlayout::adm8"></nav>
+
+
+
+		<!-- partial -->
+		<div class="container-fluid page-body-wrapper">
+			<!-- partial:../../partials/_settings-panel.html -->
+
+
+			<div th:replace="adm/Commonadm/admlayout::adm9"></div>
+
+
+			<div th:replace="adm/Commonadm/admlayout::adm10"></div>
+
+
+
+			<!-- partial -->
+			<!-- partial:../../partials/_sidebar.html -->
+
+
+			<nav th:replace="adm/Commonadm/admlayout::adm5"></nav>
+
+
+
+
+
+			<div class="col-lg-12 stretch-card">
+				<div class="card">
+					<div class="card-body">
+
+						<h4 class="card-title">Enquiries</h4>
+
+
+						<select class="form-select "  id="selecttag" style="width:20%;text-align: center;"
+							aria-label="Default select example"
+							onchange="changeStatus(this.value);">
+
+							<option selected value="All">All</option>
+							<option  value="New Booking">new_booking</option>
+							<option value="Confirm" onclick="confirm();">confirm</option>
+							<option value="Reject">Rejected</option>
+							<option value="Completed">Completed</option>
+
+						</select> <br> <br>
+
+
+						<div class="col-10">
+							<input type="text" name=" "
+								style="text-align: center; background-color: #FFF0F5; padding: 0px; width: 15%;"
+								id="myInput" placeholder="search  here....">
+						</div>
+						<p class="card-description">
+							<code></code>
+						</p>
+
+						<div class="table-responsive pt-3">
+							<table border="" style="width: 88%;"
+								class=" table-hover table-striped table-responsive-md table-sm">
+
+
+								<thead>
+
+									<tr class="table-info" style="font-size:14px;">
+
+										<form>
+											<th style="text-align: center; vertical-align: middle;">From</th>
+											<th style="text-align: center; vertical-align: middle;">To</th>
+											<th style="text-align: center; vertical-align: middle;">Booking_date</th>
+											<th style="text-align: center; vertical-align: middle;">Travel_Date</th>
+											<th style="text-align: center; vertical-align: middle;">Name</th>
+											<th style="text-align: center; vertical-align: middle;">Persons</th>
+											<th style="text-align: center; vertical-align: middle;">mo
+												no.</th>
+											<th style="text-align: center; vertical-align: middle;">Edit</th>
+											<th style="text-align: center; vertical-align: middle;">Status</th>
+
+
+
+										</form>
+
+									</tr>
+
+
+								</thead>
+								<tbody id="order">
+
+								</tbody>
+							</table>
+						</div>
+
+						<div class="modal fade" id="gbccc" tabindex="-1"
+							aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Edit
+											status here</h5>
+										<button type="button" class="btn-close" data-dismiss="modal"
+											aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										<form>
+											<div class="mb-3">
+												<label for="recipient-name" class="col-form-label">
+													Status</label> <input type="hidden" class="form-control" id="ids12"
+													aria-describedby="emailHelp" name="id">
+
+
+												<div class="col-md-12 form-group mb-3">
+
+
+													<select class="form-control form-control-rounded"
+														style="color: black;" name="" id="g1" required>
+														<option value="Confirm">Confirm</option>
+														<option value="Reject">Reject</option>
+														<option value="New Booking">New Booking</option>
+														<option value="Completed">Completed</option>
+
+
+													</select>
+												</div>
+												<br>
+											</div>
+
+											<div class="modal-footer">
+												<button type="button" class="btn btn-danger btn-sm"
+													data-dismiss="modal">Close</button>
+												<button type="button" class="btn btn-primary btn-sm"
+													onclick="update();">submit</button>
+
+											</div>
+
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<!-- 	Bootstrap Modal for Edit  -->
+
+						<div class="modal fade" id="booking" tabindex="-1"
+							aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog modal-dialog-scrollable modal-sm">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Edit here</h5>
+										<button type="button" class="btn-close" data-dismiss="modal"
+											aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										<form id='editbookings'>
+											<div class="mb-3">
+												<label for="recipient-name" class="col-form-label">From</label>
+												<input type="text" class="form-control" id="bookfromsss"
+													name="bookFrom">
+											</div>
+											<!-- we create Id which is hidden to show in backend -->
+											<div class="mb-3">
+
+												<input type="hidden" class="form-control" id="unique"
+													name="id">
+											</div>
+
+
+
+											<div class="mb-3">
+												<label for="message-text" class="col-form-label">To</label>
+												<input type="text" class="form-control" id="bookTo"
+													name="bookTo">
+											</div>
+											<div class="mb-3">
+												<label for="message-text" class="col-form-label">Date</label>
+												<input type="date" class="form-control " id="blogdate"
+													name="date" required>
+											</div>
+
+
+											<div class="mb-3">
+												<label for="message-text" class="col-form-label">Name</label>
+												<input type="text" class="form-control" id="name"
+													name="name">
+											</div>
+											<div class="mb-3">
+												<label for="message-text" class="col-form-label">Persons</label>
+												<input type="number" min="1" max="20" class="form-control"
+													id="persons" name="persons">
+											</div>
+
+											<div class="mb-3">
+												<label for="message-text" class="col-form-label">Mobile
+													no.</label> <input type="tel" pattern="[0-9]{10}"
+													class="form-control" id="mobileno" name="mobileno">
+											</div>
+
+											<div class="mb-3">
+												<input type="hidden" class="form-control" id="status"
+													name="status">
+											</div>
+
+											<div class="mb-3">
+												<input type="hidden" class="form-control" id="bookingdate"
+													name="booking_date">
+											</div>
+
+
+
+
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary btn-sm"
+													data-dismiss="modal">Close</button>
+												<button type="submit" class="btn btn-primary btn-sm">update</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- content-wrapper ends -->
+	<!-- partial:../../partials/_footer.html -->
+	<footer th:replace="adm/Commonadm/admlayout::adm6"> </footer>
+	<!-- partial -->
+	</div>
+	<!-- main-panel ends -->
+	</div>
+	<!-- page-body-wrapper ends -->
+	</div>
+	<!-- container-scroller -->
+	<!-- base:js -->
+	<script src="Admin/vendors/js/vendor.bundle.base.js"></script>
+	<script src="js/orderlist.js"></script>
+	<script src="js/travelfunction.js"></script>
+	<!-- endinject -->
+	<!-- Plugin js for this page-->
+	<!-- End plugin js for this page-->
+	<!-- inject:js -->
+
+	<div th:replace="adm/Commonadm/admlayout::adm7"></div>
+	<!-- endinject -->
+	<!-- Custom js for this page-->
+	<!-- End custom js for this page-->
+</body>
+
+</html>

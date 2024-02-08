@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="zxx" class="no-js" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="website/Common/layout::frag1"></head>
+<body style="background-color:#F0F8FF">
+
+	<header th:replace="website/Common/layout::frag2"></header>
+
+
+	<!-- start banner Area -->  
+	<section class="about-banner relative">
+		<div class="overlay overlay-bg"></div>
+		<div class="container">
+			<div class="row d-flex align-items-center justify-content-center">
+				<div class="about-content col-lg-12">
+					<h1 class="text-white">About Us</h1>
+					<p class="text-white link-nav">
+						<a href="/home">Home </a> <span class="lnr lnr-arrow-right"></span>
+						<a > About Us</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End banner Area -->
+
+	<!-- Start about-info Area -->
+	<section class="about-info-area section-gap" style="padding:25px";>
+		<div class="container" th:each="about:${aboutus}">
+			<div class="row align-items-center" >
+				<div class="col-lg-6 info-left" >
+					<img class="img-fluid" th:src="@{'/uploads/'+${about.image}}"
+						alt="" style="width: 100%; height: 100%;">
+				</div>
+				<div class="col-lg-6 info-right">
+
+					<h1 th:text="${about.heading}"></h1>
+					<p th:text="${about.description}"></p>
+				</div>
+			</div>
+			<br>
+			<br>
+		</div>
+	</section>
+	<!-- End about-info Area -->
+
+	<!-- Start price Area -->
+	<section class="destinations-area section-gap" >
+		<div class="container">
+			<div class="row d-flex justify-content-center">
+				<div class="menu-content pb-40 col-lg-8">
+					<div class="title text-center">
+						<h1 class="mb-10">We Provide Affordable Prices</h1>
+						<p>We all live in an age that belongs to the young at heart.
+							Life that is becoming extremely fast, day to.</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4" th:each="packs:${pack}">
+					<div class="single-destinations" >
+						<div class="thumb">
+							<img th:src="@{'/uploads/'+${packs.image}}" alt="" style="width: 100%; height: 100%; border-radius:3%;">
+						</div>
+						<div class="details">
+							<h4 th:text="${packs.heading}"></h4>
+							<p th:text="${packs.state}"></p>
+							<ul class="package-list">
+								<li class="d-flex justify-content-between align-items-center">
+									<span>Duration</span> <span th:text="${packs.duration}"></span>
+								</li>
+								<li class="d-flex justify-content-between align-items-center">
+									<span>Date</span> <span th:text="${packs.date}"></span>
+								</li>
+								
+								<li class="d-flex justify-content-between align-items-center">
+									<span>Extras</span> <span th:text="${packs.extras}"></span>
+								</li>
+								<li class="d-flex justify-content-between align-items-center">
+									<span>Price per person </span> <span class="price-btn" > Rs <span   th:text="${packs.price}"></span></span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</section>
+	<!-- End price Area -->
+
+
+	<!-- Start other-issue Area -->
+	<!-- <section class="other-issue-area section-gap">
+				<div class="container">
+		            <div class="row d-flex justify-content-center">
+		                <div class="menu-content pb-70 col-lg-9">
+		                    <div class="title text-center">
+		                        <h1 class="mb-10">Other issues we can help you with</h1>
+		                        <p>We all live in an age that belongs to the young at heart. Life that is.</p>
+		                    </div>
+		                </div>
+		            </div>					
+					<div class="row">
+						<div class="col-lg-3 col-md-6">
+							<div class="single-other-issue">
+								<div class="thumb">
+									<img class="img-fluid" src="img/o1.jpg" alt="">					
+								</div>
+								<a href="#">
+									<h4>Rent a Car</h4>
+								</a>
+								<p>
+									The preservation of human life is the ultimate value, a pillar of ethics and the foundation.
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6">
+							<div class="single-other-issue">
+								<div class="thumb">
+									<img class="img-fluid" src="img/o2.jpg" alt="">					
+								</div>
+								<a href="#">
+									<h4>Cruise Booking</h4>
+								</a>
+								<p>
+									I was always somebody who felt quite sorry for myself, what I had not got compared.
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6">
+							<div class="single-other-issue">
+								<div class="thumb">
+									<img class="img-fluid" src="img/o3.jpg" alt="">					
+								</div>
+								<a href="#">
+									<h4>To Do List</h4>
+								</a>
+								<p>
+									The following article covers a topic that has recently moved to center stage–at least it seems.
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6">
+							<div class="single-other-issue">
+								<div class="thumb">
+									<img class="img-fluid" src="img/o4.jpg" alt="">					
+								</div>
+								<a href="#">
+									<h4>Food Features</h4>
+								</a>
+								<p>
+									There are many kinds of narratives and organizing principles. Science is driven by evidence.
+								</p>
+							</div>
+						</div>																		
+					</div>
+				</div>	
+			</section> -->
+	<!-- End other-issue Area -->
+
+
+	<!-- Start testimonial Area -->
+	<section class="testimonial-area section-gap" style="padding: 0px";>
+		<div class="container">
+			<div class="row d-flex justify-content-center">
+				<div class="menu-content pb-70 col-lg-8">
+					<div class="title text-center">
+						<h1 class="mb-10">Testimonial from our Clients</h1>
+						<p>The French Revolution constituted for the conscience of the
+							dominant aristocratic class a fall from</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="active-testimonial">
+					<div class="single-testimonial item d-flex flex-row"
+						th:each="testi:${testimonial}">
+						<div class="thumb" style="width: 300px; margin-right: 30px;">
+
+							<!--   we use style tag to fit image in proper size -->
+
+							<img class="img-fluid" th:src="@{'/uploads/'+${testi.image2}}"
+								alt="" style="width: 40%; height: 40%; border-radius: 80%;">
+						</div>
+						<div class="desc">
+							<p th:text="${testi.feedback}"></p>
+							<h4 th:text="${testi.name}"></h4>
+							<div class="star">
+								<div th:if="${testi.rating}==''">
+									<!-- here is null value -->
+									<span class="fa fa-star "></span> <span class="fa fa-star "></span>
+									<span class="fa fa-star "></span> <span class="fa fa-star "></span>
+									<span class="fa fa-star"></span>
+								</div>
+								<div th:if="${testi.rating}=='1'">
+									<span class="fa fa-star checked"></span> <span
+										class="fa fa-star "></span> <span class="fa fa-star "></span>
+									<span class="fa fa-star "></span> <span class="fa fa-star"></span>
+								</div>
+								<div th:if="${testi.rating}=='2'">
+									<span class="fa fa-star checked"></span> <span
+										class="fa fa-star checked"></span> <span class="fa fa-star "></span>
+									<span class="fa fa-star "></span> <span class="fa fa-star"></span>
+								</div>
+								<div th:if="${testi.rating}=='3'">
+									<span class="fa fa-star checked"></span> <span
+										class="fa fa-star checked"></span> <span
+										class="fa fa-star checked"></span> <span class="fa fa-star "></span>
+									<span class="fa fa-star"></span>
+								</div>
+								<div th:if="${testi.rating}=='4'">
+									<span class="fa fa-star checked"></span> <span
+										class="fa fa-star checked"></span> <span
+										class="fa fa-star checked"></span> <span
+										class="fa fa-star checked"></span> <span class="fa fa-star"></span>
+								</div>
+								<div th:if="${testi.rating}=='5'">
+									<span class="fa fa-star checked"></span> <span
+										class="fa fa-star checked"></span> <span
+										class="fa fa-star checked"></span> <span
+										class="fa fa-star checked"></span> <span
+										class="fa fa-star checked"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+					</div>
+					</div>
+	</section>
+	<!-- End testimonial Area -->
+
+	<footer th:replace="website/Common/layout::frag3"></footer>
+</body>
+</html>
